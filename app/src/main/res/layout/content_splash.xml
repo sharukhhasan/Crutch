@@ -9,8 +9,9 @@
         android:layout_height="@android:dimen/thumbnail_height"
         android:id="@+id/splashIconView"
         android:src="@drawable/icon_128"
-        android:layout_above="@+id/appNameView"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="94dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,6 +22,6 @@
         android:textColor="#000000"
         android:typeface="serif"
         android:textSize="45dp"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/splashIconView"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

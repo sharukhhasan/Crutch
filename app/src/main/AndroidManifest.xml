@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.sharukhhasan.studycrutch.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme.Dark" >
         </activity>
         <activity

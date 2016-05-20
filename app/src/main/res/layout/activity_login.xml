@@ -69,11 +69,11 @@
             android:layout_marginBottom="30dp"
             android:padding="12dp"
             android:text="Login"
-            android:textColor="@color/appwhite"
-            android:background="@color/black" />
+            android:textColor="@color/black"
+            android:background="@color/apporange" />
 
         <com.facebook.login.widget.LoginButton
-            android:id="@+id/login_button"
+            android:id="@+id/facebook_login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
