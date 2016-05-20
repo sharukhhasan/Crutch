@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if(TextUtils.isEmpty(password))
         {
-            passwordInput.setError(getString(R.string.error_field_required));
+            passwordInput.setError(getString(R.string.error_password_required));
             incorrect = true;
         }
         else if(password.length() < 5)
@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(username))
         {
-            usernameInput.setError(getString(R.string.error_field_required));
+            usernameInput.setError(getString(R.string.error_password_required));
             incorrect = true;
         }
 
@@ -140,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
     private void createAccount(String email, String password)
     {
         Log.d(TAG, "createAccount:" + email);
-        if(!validateLogin())
+        if(validateLogin())
         {
             return;
         }
@@ -168,7 +168,7 @@ public class LoginActivity extends AppCompatActivity {
     private void signIn(String email, String password)
     {
         Log.d(TAG, "signIn:" + email);
-        if(!validateLogin())
+        if(validateLogin())
         {
             return;
         }
@@ -235,7 +235,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, CourseInputActivity.class);
                     startActivity(intent);
                     finish();
                 }

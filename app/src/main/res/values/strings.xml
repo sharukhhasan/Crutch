@@ -3,6 +3,13 @@
 
     <string name="facebook_app_id">274924176184610</string>
 
-    <string name="error_field_required">Password required!</string>
+    <string name="error_email_required">Email required!</string>
+    <string name="error_password_required">Password required!</string>
+
+    // registration
+    <string name="error_passwords_notequal">Passwords do not match!</string>
     <string name="error_invalid_password">Password needs to be longer than five characters!</string>
+    <string name="error_firstname_required">First name required!</string>
+    <string name="error_lastname_required">Last name required!</string>
+    <string name="error_username_required">Username required!</string>
 </resources>
