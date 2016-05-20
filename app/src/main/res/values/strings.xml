@@ -2,4 +2,7 @@
     <string name="app_name">Studycrutch</string>
 
     <string name="facebook_app_id">274924176184610</string>
+
+    <string name="error_field_required">Password required!</string>
+    <string name="error_invalid_password">Password needs to be longer than five characters!</string>
 </resources>

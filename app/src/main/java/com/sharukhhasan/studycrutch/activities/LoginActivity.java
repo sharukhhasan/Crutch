@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -30,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     @InjectView(R.id.input_username) EditText usernameInput;
     @InjectView(R.id.input_password) EditText passwordInput;
+    @InjectView(R.id.btn_login) Button loginButton;
+    @InjectView(R.id.link_signup) TextView signupButton;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -52,6 +58,9 @@ public class LoginActivity extends AppCompatActivity {
                 if(user != null)
                 {
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
                 else
                 {
@@ -61,9 +70,9 @@ public class LoginActivity extends AppCompatActivity {
         };
 
         mCallbackManager = CallbackManager.Factory.create();
-        LoginButton loginButton = (LoginButton) findViewById(R.id.facebook_login_button);
-        loginButton.setReadPermissions("email", "public_profile");
-        loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        LoginButton fbLoginButton = (LoginButton) findViewById(R.id.facebook_login_button);
+        fbLoginButton.setReadPermissions("email", "public_profile");
+        fbLoginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult)
             {
@@ -81,6 +90,104 @@ public class LoginActivity extends AppCompatActivity {
             public void onError(FacebookException error)
             {
                 Log.d(TAG, "facebook:onError", error);
+            }
+        });
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                signIn(usernameInput.getText().toString(), passwordInput.getText().toString());
+            }
+        });
+
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                createAccount(usernameInput.getText().toString(), passwordInput.getText().toString());
+            }
+        });
+    }
+
+    public boolean validateLogin()
+    {
+        String username = usernameInput.getText().toString();
+        String password = passwordInput.getText().toString();
+
+        boolean incorrect = false;
+
+        if(TextUtils.isEmpty(password))
+        {
+            passwordInput.setError(getString(R.string.error_field_required));
+            incorrect = true;
+        }
+        else if(password.length() < 5)
+        {
+            passwordInput.setError(getString(R.string.error_invalid_password));
+            incorrect = true;
+        }
+
+        if (TextUtils.isEmpty(username))
+        {
+            usernameInput.setError(getString(R.string.error_field_required));
+            incorrect = true;
+        }
+
+        return incorrect;
+    }
+
+    private void createAccount(String email, String password)
+    {
+        Log.d(TAG, "createAccount:" + email);
+        if(!validateLogin())
+        {
+            return;
+        }
+
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task)
+            {
+                Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+
+                if(!task.isSuccessful())
+                {
+                    Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+    }
+
+    private void signIn(String email, String password)
+    {
+        Log.d(TAG, "signIn:" + email);
+        if(!validateLogin())
+        {
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                if(!task.isSuccessful())
+                {
+                    Log.w(TAG, "signInWithEmail", task.getException());
+                    Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
     }
@@ -125,6 +232,12 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     Log.w(TAG, "signInWithCredential", task.getException());
                     Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });
