@@ -1,4 +1,4 @@
-package com.sharukhhasan.crutch;
+package com.sharukhhasan.studycrutch;
 
 import org.junit.Test;
 
