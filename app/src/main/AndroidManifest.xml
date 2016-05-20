@@ -36,7 +36,8 @@
             android:name=".activities.HomeActivity"
             android:theme="@style/AppTheme.Dark" />
         <activity android:name=".activities.CourseInputActivity" />
-        <activity android:name=".activities.RegisterActivity"></activity>
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.SingleCourseActivity"></activity>
     </application>
 
 </manifest>

@@ -139,30 +139,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void createAccount(String email, String password)
     {
-        Log.d(TAG, "createAccount:" + email);
-        if(validateLogin())
-        {
-            return;
-        }
-
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task)
-            {
-                Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-
-                if(!task.isSuccessful())
-                {
-                    Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-        });
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void signIn(String email, String password)
