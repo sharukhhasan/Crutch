@@ -19,7 +19,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/app_name"
         android:id="@+id/appNameView"
-        android:textColor="#000000"
+        android:textColor="@color/apporange"
         android:typeface="serif"
         android:textSize="45dp"
         android:layout_below="@+id/splashIconView"

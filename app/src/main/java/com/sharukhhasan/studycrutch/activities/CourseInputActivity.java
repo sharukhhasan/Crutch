@@ -2,15 +2,27 @@ package com.sharukhhasan.studycrutch.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
+import com.facebook.internal.CollectionMapper;
+import com.sharukhhasan.studycrutch.AppController;
 import com.sharukhhasan.studycrutch.R;
 
-public class CourseInputActivity extends AppCompatActivity {
-    private String[] spinnerItems;
-    private static final String TAG = CourseInputActivity.class.getSimpleName();
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
 
-    Spinner coursesOne, coursesTwo, coursesThree, coursesFour, coursesFive;
+public class CourseInputActivity extends AppCompatActivity {
+    public static final String TAG = "CourseInputActivity";
+    private ImageButton btnAdd;
+    private Spinner courses;
+    private Map<String, ArrayList<String>> coursesMap = AppController.courseMap;
+    private ArrayList<String> coursesList = AppController.courseList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -18,37 +30,23 @@ public class CourseInputActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_input);
 
-        createSpinners();
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                LinearLayout newLinear = new LinearLayout(CourseInputActivity.this);
+                Spinner newSpinner = new Spinner(CourseInputActivity.this);
+
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(CourseInputActivity.this, R.array.coursesArray, android.R.layout.simple_spinner_item);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+                newSpinner.setAdapter(adapter);
+                newLinear.addView(newSpinner);
+                setContentView(newLinear);
+            }
+        });
     }
 
-    public void createSpinners()
-    {
-        final Spinner coursesOne = (Spinner) findViewById(R.id.courseOneSpinner);
-        final Spinner coursesTwo = (Spinner) findViewById(R.id.courseTwoSpinner);
-        final Spinner coursesThree = (Spinner) findViewById(R.id.courseThreeSpinner);
-        final Spinner coursesFour = (Spinner) findViewById(R.id.courseFourSpinner);
-        final Spinner coursesFive = (Spinner) findViewById(R.id.courseFiveSpinner);
-        /*ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("EngineeringCourses");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, ParseException e) {
-                if (e == null) {
-                    ArrayList<String> courseNameList = new ArrayList<>();
-                    ArrayList<String> courseNumberList = new ArrayList<>();
-                    for (ParseObject object : list) {
-                        courseNameList.add(object.getString("coursename"));
-                    }
-                    ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, courseNameList);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    coursesOne.setAdapter(adapter);
-                    coursesTwo.setAdapter(adapter);
-                    coursesThree.setAdapter(adapter);
-                    coursesFour.setAdapter(adapter);
-                    coursesFive.setAdapter(adapter);
-                } else {
-                    Log.d(TAG, "e is not null");
-                }
-            }
-        });*/
-    }
+
 }

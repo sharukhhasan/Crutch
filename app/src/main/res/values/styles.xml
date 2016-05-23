@@ -26,5 +26,20 @@
         <item name="android:background">@color/oil</item>
     </style>
 
+    <style name="AppTheme.DarkInverse" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/oil</item>
+        <item name="colorPrimaryDark">@color/jet</item>
+        <item name="colorAccent">@color/apporange</item>
+
+        <item name="android:windowBackground">@color/apporange</item>
+
+        <item name="colorControlNormal">@color/iron</item>
+        <item name="colorControlActivated">@color/apporange</item>
+        <item name="colorControlHighlight">@color/apporange</item>
+        <item name="android:textColorHint">@color/appwhite</item>
+
+        <item name="colorButtonNormal">@color/appwhite</item>
+    </style>
+
 </resources>
 

@@ -45,10 +45,10 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(!validateRegistration())
-                {
+                //if(!validateRegistration())
+                //{
                     createAccount(emailInput.getText().toString(), passwordInput.getText().toString());
-                }
+                //}
             }
         });
 
@@ -109,16 +109,16 @@ public class RegisterActivity extends AppCompatActivity {
     private void createAccount(String email, String password)
     {
         Log.d(TAG, "createAccount:" + email);
-        if(!validateRegistration())
+        /*if(!validateRegistration())
         {
             return;
-        }
+        }*/
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-
+                Log.d(TAG, task.getResult().toString());
                 if (!task.isSuccessful()) {
                     Toast.makeText(RegisterActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                 } else {
