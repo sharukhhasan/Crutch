@@ -14,4 +14,7 @@
     <color name="iron">#CCCCCC</color>
     <color name="apporange">#E65749</color>
     <color name="appwhite">#FFFFFF</color>
+
+    <color name="addBtnColor">#48CF6C</color>
+
 </resources>

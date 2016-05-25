@@ -24,6 +24,7 @@ public class AppController extends Application{
     private static final String[] csvEngrFiles = {"BME.csv", "CBE.csv", "CEE.csv", "ECE.csv", "ENGR.csv", "IE.csv", "ME.csv"};
     public static Map<String, ArrayList<String>> engrCourseMap;
     public static ArrayList<String> engrDepts;
+    public static ArrayList<String> engrCourses;
 
     @Override
     public void onCreate()
@@ -31,9 +32,24 @@ public class AppController extends Application{
         super.onCreate();
 
         try {
-            createEngrCourseMao();
+            buildEngrCourses();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void buildEngrCourses() throws IOException
+    {
+        engrCourses = new ArrayList<>();
+
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("engrcourses.csv"));
+        String lineInput = null;
+
+        while((lineInput = bufferedReader.readLine()) != null)
+        {
+            Scanner sc = new Scanner(lineInput);
+            sc.useDelimiter(",");
+            engrCourses.add(sc.next());
         }
     }
 
@@ -71,9 +87,9 @@ public class AppController extends Application{
 
     }
 
-    public ArrayList<String> getEngrDepts()
+    public ArrayList<String> getEngrCourses()
     {
-        return engrDepts;
+        return engrCourses;
     }
 
     public Map<String, ArrayList<String>> getCourses()
