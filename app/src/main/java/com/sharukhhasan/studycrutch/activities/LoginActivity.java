@@ -27,15 +27,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.sharukhhasan.studycrutch.R;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
-    @InjectView(R.id.input_username) EditText usernameInput;
-    @InjectView(R.id.input_password) EditText passwordInput;
-    @InjectView(R.id.btn_login) Button loginButton;
-    @InjectView(R.id.link_signup) TextView signupButton;
+    private EditText usernameInput;
+    private EditText passwordInput;
+    private Button loginButton;
+    private TextView signupButton;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -46,7 +43,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ButterKnife.inject(this);
+        usernameInput = (EditText) findViewById(R.id.input_username);
+        passwordInput = (EditText) findViewById(R.id.input_password);
+        signupButton = (TextView) findViewById(R.id.btn_signup);
+        loginButton = (Button) findViewById(R.id.btn_login);
 
         mAuth = FirebaseAuth.getInstance();
 

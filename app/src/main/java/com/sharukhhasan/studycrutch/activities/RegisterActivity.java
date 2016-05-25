@@ -18,17 +18,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharukhhasan.studycrutch.R;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class RegisterActivity extends AppCompatActivity {
     private final static String TAG = "RegisterActivity";
-    @InjectView(R.id.input_name) EditText aliasInput;
-    @InjectView(R.id.input_email) EditText emailInput;
-    @InjectView(R.id.input_password) EditText passwordInput;
-    @InjectView(R.id.input_confirmPassword) EditText confirmPasswordInput;
-    @InjectView(R.id.btn_signup) Button signUpButton;
-    @InjectView(R.id.link_login) TextView loginButton;
+    private EditText emailInput;
+    private EditText passwordInput;
+    private EditText confirmPasswordInput;
+    private Button signUpButton;
+    private TextView loginButton;
 
     private FirebaseAuth mAuth;
 
@@ -37,7 +34,12 @@ public class RegisterActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        ButterKnife.inject(this);
+
+        emailInput = (EditText) findViewById(R.id.input_email);
+        passwordInput = (EditText) findViewById(R.id.input_password);
+        confirmPasswordInput = (EditText) findViewById(R.id.input_confirmPassword);
+        signUpButton = (Button) findViewById(R.id.btn_signup);
+        loginButton = (TextView) findViewById(R.id.btn_login);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -65,18 +67,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     public boolean validateRegistration()
     {
-        String username = aliasInput.getText().toString();
         String email = emailInput.getText().toString();
         String password = passwordInput.getText().toString();
         String confirmPassword = confirmPasswordInput.getText().toString();
 
         boolean incorrect = false;
 
-        if(TextUtils.isEmpty(username))
-        {
-            aliasInput.setError(getString(R.string.error_username_required));
-            incorrect = true;
-        }
         if(TextUtils.isEmpty(email))
         {
             emailInput.setError(getString(R.string.error_email_required));

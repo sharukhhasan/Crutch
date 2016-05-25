@@ -7,51 +7,50 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.sharukhhasan.studycrutch.AppController;
 import com.sharukhhasan.studycrutch.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
-import butterknife.ButterKnife;
 import info.hoang8f.widget.FButton;
-
-import butterknife.BindView;
 
 public class CourseInputActivity extends AppCompatActivity implements OnItemSelectedListener{
     public static final String TAG = "CourseInputActivity";
-
-    @BindView(R.id.addCourseBtn)
+    private AppController controller = (AppController)getApplication();
     private FButton btnAdd;
-
-    @BindView(R.id.finishedBtn)
     private FButton btnDone;
-
-    @BindView(R.id.courseSpinner)
-    private Spinner mSpinner;
-
+    private Spinner deptSpinner;
+    private Spinner courseSpinner;
+    private ArrayList<String> deptList;
     private ArrayList<String> courseList;
-    private AppController controller = new AppController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_input);
-        ButterKnife.bind(this);
 
-        courseList = controller.getEngrCourses();
+        try {
+            controller.getDeptList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        deptList = controller.getEngrDepts();
         String[] courseArray = courseList.toArray(new String[courseList.size()]);
-        ArrayAdapter<CharSequence> courseAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, courseArray);
-        mSpinner = (Spinner) findViewById(R.id.courseSpinner);
-        mSpinner.setAdapter(courseAdapter);
-        mSpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+        ArrayAdapter<CharSequence> deptAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, courseArray);
 
+        deptSpinner = (Spinner) findViewById(R.id.courseSpinner);
+        deptSpinner.setAdapter(deptAdapter);
+        deptSpinner.setOnItemSelectedListener(this);
 
+        courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
 
-        //btnAdd = (FButton) findViewById(R.id.addCourseBtn);
+        btnAdd = (FButton) findViewById(R.id.addCourseBtn);
         btnAdd.setButtonColor(R.color.apporange);
         btnAdd.setShadowHeight(8);
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +61,7 @@ public class CourseInputActivity extends AppCompatActivity implements OnItemSele
             }
         });
 
-        //btnDone = (FButton) findViewById(R.id.finishedBtn);
+        btnDone = (FButton) findViewById(R.id.finishedBtn);
         btnDone.setButtonColor(R.color.apporange);
         btnDone.setShadowHeight(8);
         btnDone.setOnClickListener(new View.OnClickListener() {
@@ -80,9 +79,12 @@ public class CourseInputActivity extends AppCompatActivity implements OnItemSele
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
     {
-        mSpinner.setSelection(position);
-        String selectedCourse = (String) mSpinner.getSelectedItem();
-        mSpinner.setText(selectedCourse);
+        String item = parent.getItemAtPosition(position).toString();
+        Map<String, ArrayList<String>> courseMap = controller.getEngrCourseMap();
+        courseList = courseMap.get(item);
+        String[] courseArray = courseList.toArray(new String[courseList.size()]);
+        ArrayAdapter<CharSequence> courseAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, courseArray);
+        courseSpinner.setAdapter(courseAdapter);
     }
 
     @Override
