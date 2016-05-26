@@ -18,14 +18,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharukhhasan.studycrutch.R;
 
-
 public class RegisterActivity extends AppCompatActivity {
     private final static String TAG = "RegisterActivity";
     private EditText emailInput;
     private EditText passwordInput;
     private EditText confirmPasswordInput;
     private Button signUpButton;
-    private TextView loginButton;
+    private Button loginButton;
 
     private FirebaseAuth mAuth;
 
@@ -39,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         passwordInput = (EditText) findViewById(R.id.input_password);
         confirmPasswordInput = (EditText) findViewById(R.id.input_confirmPassword);
         signUpButton = (Button) findViewById(R.id.btn_signup);
-        loginButton = (TextView) findViewById(R.id.btn_login);
+        loginButton = (Button) findViewById(R.id.link_login);
 
         mAuth = FirebaseAuth.getInstance();
 

@@ -12,7 +12,6 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import com.sharukhhasan.studycrutch.AppController;
 import com.sharukhhasan.studycrutch.R;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -33,12 +32,6 @@ public class CourseInputActivity extends AppCompatActivity implements OnItemSele
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_input);
-
-        try {
-            controller.getDeptList();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         deptList = controller.getEngrDepts();
         String[] courseArray = courseList.toArray(new String[courseList.size()]);

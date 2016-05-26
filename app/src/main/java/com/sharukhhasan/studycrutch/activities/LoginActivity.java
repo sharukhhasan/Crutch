@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText usernameInput;
     private EditText passwordInput;
     private Button loginButton;
-    private TextView signupButton;
+    private Button signupButton;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
         usernameInput = (EditText) findViewById(R.id.input_username);
         passwordInput = (EditText) findViewById(R.id.input_password);
-        signupButton = (TextView) findViewById(R.id.btn_signup);
+        signupButton = (Button) findViewById(R.id.btn_signup);
         loginButton = (Button) findViewById(R.id.btn_login);
 
         mAuth = FirebaseAuth.getInstance();

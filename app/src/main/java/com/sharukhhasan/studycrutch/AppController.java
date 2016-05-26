@@ -1,6 +1,7 @@
 package com.sharukhhasan.studycrutch;
 
 import android.app.Application;
+import android.os.Bundle;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,13 +16,23 @@ import java.util.Scanner;
  */
 public class AppController extends Application{
     public static final String FIREBASE_URL = "https://studycrutch.firebaseio.com/";
-    public static Map<String, ArrayList<String>> engrCourseMap = new HashMap<>();
-    public static ArrayList<String> engrDepts;
+    public static final Map<String, ArrayList<String>> engrCourseMap = new HashMap<>();
+    public static final ArrayList<String> engrDepts = new ArrayList<>();
+
+    @Override
+    public void onCreate()
+    {
+        super.onCreate();
+
+        try {
+            getDeptList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void getDeptList() throws IOException
     {
-        engrDepts = new ArrayList<>();
-
         BufferedReader bufferedReader = new BufferedReader(new FileReader("departments.csv"));
         String lineInput = null;
 

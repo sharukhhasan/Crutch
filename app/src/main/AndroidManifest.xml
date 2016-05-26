@@ -10,7 +10,7 @@
         android:icon="@drawable/icon_64"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.Dark">
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -38,9 +38,13 @@
             android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".activities.CourseInputActivity"
-            android:theme="@style/AppTheme.DarkInverse"/>
-        <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.SingleCourseActivity"></activity>
+            android:theme="@style/AppTheme.Dark"/>
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:theme="@style/AppTheme.Dark"/>
+        <activity
+            android:name=".activities.SingleCourseActivity"
+            android:theme="@style/AppTheme.Dark"/>
     </application>
 
 </manifest>
