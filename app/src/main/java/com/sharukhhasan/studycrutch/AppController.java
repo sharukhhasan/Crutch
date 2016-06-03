@@ -24,8 +24,8 @@ public class AppController extends Application{
     private static final String TWITTER_SECRET = "oC2YvyXcIukWZMSYTolmNixjJwacjJpxUFvKnkeSvv7AM0yQ7b";
 
     public static final String FIREBASE_URL = "https://studycrutch.firebaseio.com/";
-    public static final Map<String, ArrayList<String>> engrCourseMap = new HashMap<>();
-    public static final ArrayList<String> engrDepts = new ArrayList<>();
+    public static ArrayList<String> engrDepts = getEngrDepts();
+    public static Map<String, ArrayList<String>> engrCourseMap = getEngrCourseMap();
 
     @Override
     public void onCreate()
@@ -41,8 +41,11 @@ public class AppController extends Application{
         }
     }
 
-    public void getDeptList() throws IOException
+    public static ArrayList<String> getDeptList() throws IOException
     {
+        ArrayList<String> returnDeptList = new ArrayList<>();
+        engrDepts = new ArrayList<>();
+
         BufferedReader bufferedReader = new BufferedReader(new FileReader("departments.csv"));
         String lineInput = null;
 
@@ -50,16 +53,19 @@ public class AppController extends Application{
         {
             Scanner sc = new Scanner(lineInput);
             sc.useDelimiter(",");
+            returnDeptList.add(sc.next());
             engrDepts.add(sc.next());
         }
 
-        for(String dept : engrDepts)
+        for(String dept : returnDeptList)
         {
             getCourseList(dept);
         }
+
+        return returnDeptList;
     }
 
-    public void getCourseList(String dept) throws IOException
+    public static void getCourseList(String dept) throws IOException
     {
         engrCourseMap.put(dept, new ArrayList<String>());
 
@@ -74,12 +80,12 @@ public class AppController extends Application{
         }
     }
 
-    public Map<String, ArrayList<String>> getEngrCourseMap()
+    public static Map<String, ArrayList<String>> getEngrCourseMap()
     {
         return engrCourseMap;
     }
 
-    public ArrayList<String> getEngrDepts()
+    public static ArrayList<String> getEngrDepts()
     {
         return engrDepts;
     }

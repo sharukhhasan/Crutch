@@ -24,6 +24,7 @@ public class CourseInputActivity extends AppCompatActivity implements OnItemSele
     private FButton btnDone;
     private Spinner deptSpinner;
     private Spinner courseSpinner;
+    private Map<String, ArrayList<String>> deptCourseMap;
     private ArrayList<String> deptList;
     private ArrayList<String> courseList;
 
@@ -34,8 +35,9 @@ public class CourseInputActivity extends AppCompatActivity implements OnItemSele
         setContentView(R.layout.activity_course_input);
 
         deptList = controller.getEngrDepts();
-        String[] courseArray = courseList.toArray(new String[courseList.size()]);
-        ArrayAdapter<CharSequence> deptAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, courseArray);
+        deptCourseMap = controller.getEngrCourseMap();
+        String[] deptArray = deptList.toArray(new String[deptList.size()]);
+        ArrayAdapter<CharSequence> deptAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, deptArray);
 
         deptSpinner = (Spinner) findViewById(R.id.courseSpinner);
         deptSpinner.setAdapter(deptAdapter);
@@ -73,7 +75,7 @@ public class CourseInputActivity extends AppCompatActivity implements OnItemSele
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
     {
         String item = parent.getItemAtPosition(position).toString();
-        Map<String, ArrayList<String>> courseMap = controller.getEngrCourseMap();
+        Map<String, ArrayList<String>> courseMap = controller.engrCourseMap;
         courseList = courseMap.get(item);
         String[] courseArray = courseList.toArray(new String[courseList.size()]);
         ArrayAdapter<CharSequence> courseAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, courseArray);
