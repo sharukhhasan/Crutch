@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Course {
     private String professor;
+    private String courseName;
     private ArrayList<User> classmates;
     private ArrayList<WallPost> courseWall;
 
@@ -18,6 +19,16 @@ public class Course {
 
     public void setProfessor(String professor) {
         this.professor = professor;
+    }
+
+    public String getCourseName()
+    {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName)
+    {
+        this.courseName = courseName;
     }
 
     public ArrayList<User> getClassmates() {

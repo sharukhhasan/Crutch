@@ -3,6 +3,7 @@ package com.sharukhhasan.studycrutch;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.sharukhhasan.studycrutch.models.Course;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import io.fabric.sdk.android.Fabric;
@@ -26,6 +27,8 @@ public class AppController extends Application{
     public static final String FIREBASE_URL = "https://studycrutch.firebaseio.com/";
     public static ArrayList<String> engrDepts = getEngrDepts();
     public static Map<String, ArrayList<String>> engrCourseMap = getEngrCourseMap();
+
+    public static ArrayList<Course> enrolledCourses;
 
     @Override
     public void onCreate()

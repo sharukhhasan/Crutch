@@ -1,9 +1,9 @@
 package com.sharukhhasan.studycrutch.activities;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -13,6 +13,7 @@ import com.sharukhhasan.studycrutch.R;
 public class CourseInputActivity extends AppCompatActivity {
     private int mMorphCounter1 = 1;
     private int mMorphCounter2 = 1;
+    private String deptSelection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,6 +26,14 @@ public class CourseInputActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> deptAdapter = ArrayAdapter.createFromResource(this, R.array.deptArray, android.R.layout.simple_spinner_item);
         deptAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         deptSpinner.setAdapter(deptAdapter);
+        deptSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                deptSelection = (String) parent.getItemAtPosition(position);
+                createCoursesSpinner(deptSelection);
+            }
+        });
 
         Spinner dynamicSpinner = (Spinner) findViewById(R.id.courseSpinner);
 
@@ -46,6 +55,10 @@ public class CourseInputActivity extends AppCompatActivity {
 
         morphToSquare1(btnMorph1, 0);
         morphToFailure(btnMorph2, 0);
+    }
+
+    private void createCoursesSpinner(String dept)
+    {
 
     }
 

@@ -26,7 +26,7 @@
         <item>ME</item>
     </string-array>
 
-    <string-array name="coursesArray">
+    <string-array name="ece_courses">
         <item>ECE:2400 Linear Systems I</item>
         <item>ECE:2410 Principles of Electronic Instrumentation</item>
         <item>ECE:3350 Computer Architecture and Organization</item>
@@ -50,6 +50,9 @@
         <item>ECE:5995 Contemp Topics in Elect and Computer Eng</item>
         <item>ECE:7470 Image Analysis and Understanding</item>
         <item>ECE:7995 Adv Topics in Electrical and Computer Engr</item>
+    </string-array>
+
+    <string-array name="me_courses">
         <item>ME:3040 Thermodynamics II</item>
         <item>ME:3045 Heat Transfer</item>
         <item>ME:3052 Mechanical Systems</item>
@@ -74,10 +77,9 @@
         <item>ME:6262 Inviscid Flow</item>
         <item>ME:7248 Combustion Theory</item>
         <item>ME:7269 Comp Fluid Dynamics and Heat Transfer</item>
-        <item>BUS:2013 Introduction to Sustainability</item>
-        <item>BUS:3000 Business Communication and Protocol</item>
-        <item>BUS:3200 Advanced Business Presentation Workshop</item>
-        <item>BUS:3800 Business Writing</item>
+    </string-array>
+
+    <string-array name="engr_courses">
         <item>ENGR:1100 Engineering Problem Solving I</item>
         <item>ENGR:1300 Engineering Problem Solving II</item>
         <item>ENGR:1430 Introduction to Engineering Design</item>
@@ -99,30 +101,9 @@
         <item>ENGR:2750 Mechanics of Deformable Bodies</item>
         <item>ENGR:2760 Design for Manufacturing</item>
         <item>ENGR:4000 Engineering Honors Seminar</item>
-        <item>EES:1030 Introduction to Earth Science</item>
-        <item>EES:1040 Evolution and the History of Life</item>
-        <item>EES:1050 Introduction to Geology</item>
-        <item>EES:1060 Big Ideas Origins Univ Earth and Life</item>
-        <item>EES:1070 Age of Dinosaurs</item>
-        <item>EES:1080 Introduction to Environmental Science</item>
-        <item>EES:1085 Fundamentals of Environmental Science</item>
-        <item>EES:1115 Big Ideas The History and Science of Oil</item>
-        <item>EES:1170 Geology of the U.S. National Parks</item>
-        <item>EES:1400 Natural Disasters</item>
-        <item>EES:2310 Introduction to Climatology</item>
-        <item>EES:2410 Mineralogy</item>
-        <item>EES:3020 Earth Surface Processes</item>
-        <item>EES:3070 Marine Ecosystems and Conservation</item>
-        <item>EES:3200 Collection Care and Management</item>
-        <item>EES:3210 Principles of Paleontology</item>
-        <item>EES:3300 Sedimentary Geology</item>
-        <item>EES:3360 Soil Genesis and Geomorphology</item>
-        <item>EES:3380 Fluvial Geomorphology</item>
-        <item>EES:3770 Global Stratigraphy</item>
-        <item>EES:4156 Scn Electrn Microscopy and Xray Microanaly</item>
-        <item>EES:4490 Elements of Geochemistry</item>
-        <item>EES:4790 Engineering Geology</item>
-        <item>EES:4800 Solid Earth Geophysics</item>
+    </string-array>
+
+    <string-array name="cee_courses">
         <item>CEE:1030 Introduction to Earth Science</item>
         <item>CEE:2150 Natural Environmental Systems</item>
         <item>CEE:2240 Digital Drafting with AutoCAD</item>
@@ -158,14 +139,9 @@
         <item>CEE:6376 Viscous Flow</item>
         <item>CEE:6763 Application Simulation to Transportation</item>
         <item>CEE:7549 Multiscale Modeling</item>
-        <item>BIOS:4120 Introduction to Biostatistics</item>
-        <item>BIOS:5310 Research Data Management</item>
-        <item>BIOS:5510 Biostatistical Computing</item>
-        <item>BIOS:5710 Biostatistical Methods I</item>
-        <item>BIOS:6110 Applied Categorical Data Analysis</item>
-        <item>BIOS:6310 Introductory Longitudinal Data Analysis</item>
-        <item>BIOS:7110 Theory of Biostatistics I</item>
-        <item>BIOS:7210 Survival Data Analysis</item>
+    </string-array>
+
+    <string-array name="cbe_courses">
         <item>CBE:2105 Process Calculations</item>
         <item>CBE:3105 Chemical Engineering Thermodynamics</item>
         <item>CBE:3110 Engineering Flow and Heat Exchange</item>
@@ -183,13 +159,9 @@
         <item>CBE:5210 Bioseparations</item>
         <item>CBE:5425 Atmospheric Chemistry and Physics</item>
         <item>CBE:5875 Perspectives in Biocatalysis</item>
-        <item>CBH:3102 Medical Anthropology</item>
-        <item>CBH:3150 Media and Health</item>
-        <item>CBH:4105 Intro to Health Promotion and Disease Prev</item>
-        <item>CBH:4210 International Health</item>
-        <item>CBH:5220 Health Behavior and Health Education</item>
-        <item>CBH:5235 Community Based Participatory Research</item>
-        <item>CBH:5305 Evaluation I: Approaches and Application</item>
+    </string-array>
+
+    <string-array name="bme_courses">
         <item>BME:2110 Cell Biology for Engineers</item>
         <item>BME:2200 Systems Instrum and Data Acquisition</item>
         <item>BME:2210 Bioimaging and Bioinformatics</item>
@@ -206,6 +178,9 @@
         <item>BME:5660 Intermed Mechanics of Deformable Bodies</item>
         <item>BME:5910 Fast Track Biomedical Eng Design 2A</item>
         <item>BME:5911 Fast Track Biomedical Eng Design 2B</item>
+    </string-array>
+
+    <string-array name="ie_courses">
         <item>IE:2500 Engineering Economy</item>
         <item>IE:3149 Information Visualization</item>
         <item>IE:3300 Manufacturing Systems</item>
@@ -220,4 +195,5 @@
         <item>IE:6300 Innovation Science and Studies</item>
         <item>IE:6420 Human Computer Interaction</item>
     </string-array>
+
 </resources>
