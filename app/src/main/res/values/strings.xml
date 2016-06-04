@@ -13,6 +13,19 @@
     <string name="error_lastname_required">Last name required!</string>
     <string name="error_username_required">Username required!</string>
 
+    <string name="add_course">Add Course</string>
+    <string name="finished">Finished</string>
+
+    <string-array name="deptArray">
+        <item>BME</item>
+        <item>CBE</item>
+        <item>CEE</item>
+        <item>ECE</item>
+        <item>ENGR</item>
+        <item>IE</item>
+        <item>ME</item>
+    </string-array>
+
     <string-array name="coursesArray">
         <item>ECE:2400 Linear Systems I</item>
         <item>ECE:2410 Principles of Electronic Instrumentation</item>

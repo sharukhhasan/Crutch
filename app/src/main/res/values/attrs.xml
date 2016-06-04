@@ -3,4 +3,6 @@
     <declare-styleable name="SearchableSpinner">
         <attr name="list" format="reference" />
     </declare-styleable>
+
+    <integer name="mb_animation">500</integer>
 </resources>

@@ -27,23 +27,28 @@
         android:hint="Course">
     </Spinner>
 
-    <info.hoang8f.widget.FButton
+    <com.dd.morphingbutton.MorphingButton
         android:id="@+id/addCourseBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Another"
-        android:typeface="monospace"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/black" />
 
-    <info.hoang8f.widget.FButton
-        android:id="@+id/finishedBtn"
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Finished"
-        android:typeface="monospace"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/black" />
+        android:layout_margin="20dp">
+
+        <com.dd.morphingbutton.impl.LinearProgressButton
+            android:id="@+id/btnMorph1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/mb_white"/>
+
+    </FrameLayout>
+
 
 
 

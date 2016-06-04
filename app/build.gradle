@@ -33,6 +33,7 @@ android {
 repositories {
     mavenCentral()
     maven { url 'https://maven.fabric.io/public' }
+    maven { url "https://jitpack.io" }
 }
 
 apply plugin: 'com.neenbedankt.android-apt'
@@ -49,6 +50,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'info.hoang8f:fbutton:1.0.5'
+    compile 'com.github.dmytrodanylyk:android-morphing-button:98a4986e56'
     compile('com.twitter.sdk.android:twitter:1.13.1@aar') {
         transitive = true;
     }

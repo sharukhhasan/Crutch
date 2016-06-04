@@ -1,32 +1,18 @@
 package com.sharukhhasan.studycrutch.activities;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.AdapterView.OnItemSelectedListener;
 
-import com.sharukhhasan.studycrutch.AppController;
+import com.dd.morphingbutton.MorphingButton;
 import com.sharukhhasan.studycrutch.R;
 
-import java.util.ArrayList;
-import java.util.Map;
-
-import info.hoang8f.widget.FButton;
-
-public class CourseInputActivity extends AppCompatActivity implements OnItemSelectedListener{
-    public static final String TAG = "CourseInputActivity";
-    private AppController controller = (AppController)getApplication();
-    private FButton btnAdd;
-    private FButton btnDone;
-    private Spinner deptSpinner;
-    private Spinner courseSpinner;
-    private Map<String, ArrayList<String>> deptCourseMap;
-    private ArrayList<String> deptList;
-    private ArrayList<String> courseList;
+public class CourseInputActivity extends AppCompatActivity {
+    private int mMorphCounter1 = 1;
+    private int mMorphCounter2 = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,57 +20,109 @@ public class CourseInputActivity extends AppCompatActivity implements OnItemSele
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_input);
 
-        deptList = controller.getEngrDepts();
-        deptCourseMap = controller.getEngrCourseMap();
-        String[] deptArray = deptList.toArray(new String[deptList.size()]);
-        ArrayAdapter<CharSequence> deptAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, deptArray);
+        Spinner deptSpinner = (Spinner) findViewById(R.id.deptSpinner);
 
-        deptSpinner = (Spinner) findViewById(R.id.courseSpinner);
+        ArrayAdapter<CharSequence> deptAdapter = ArrayAdapter.createFromResource(this, R.array.deptArray, android.R.layout.simple_spinner_item);
+        deptAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         deptSpinner.setAdapter(deptAdapter);
-        deptSpinner.setOnItemSelectedListener(this);
 
-        courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
+        Spinner dynamicSpinner = (Spinner) findViewById(R.id.courseSpinner);
 
-        btnAdd = (FButton) findViewById(R.id.addCourseBtn);
-        btnAdd.setButtonColor(R.color.apporange);
-        btnAdd.setShadowHeight(8);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+        final MorphingButton btnMorph1 = (MorphingButton) findViewById(R.id.addCourseBtn);
+        btnMorph1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-
+            public void onClick(View view) {
+                onMorphButton1Clicked(btnMorph1);
             }
         });
 
-        btnDone = (FButton) findViewById(R.id.finishedBtn);
-        btnDone.setButtonColor(R.color.apporange);
-        btnDone.setShadowHeight(8);
-        btnDone.setOnClickListener(new View.OnClickListener() {
+        final MorphingButton btnMorph2 = (MorphingButton) findViewById(R.id.finishedBtn);
+        btnMorph2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(CourseInputActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+            public void onClick(View view) {
+                onMorphButton2Clicked(btnMorph2);
             }
         });
 
+        morphToSquare1(btnMorph1, 0);
+        morphToFailure(btnMorph2, 0);
+
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+    private void onMorphButton1Clicked(final MorphingButton btnMorph)
     {
-        String item = parent.getItemAtPosition(position).toString();
-        Map<String, ArrayList<String>> courseMap = controller.engrCourseMap;
-        courseList = courseMap.get(item);
-        String[] courseArray = courseList.toArray(new String[courseList.size()]);
-        ArrayAdapter<CharSequence> courseAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, courseArray);
-        courseSpinner.setAdapter(courseAdapter);
+        if(mMorphCounter1 == 0)
+        {
+            mMorphCounter1++;
+            morphToSquare1(btnMorph, R.integer.mb_animation);
+        }
+        else if(mMorphCounter1 == 1)
+        {
+            mMorphCounter1 = 0;
+            morphToSuccess(btnMorph);
+        }
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent)
+    private void onMorphButton2Clicked(final MorphingButton btnMorph)
     {
+        if(mMorphCounter2 == 0)
+        {
+            mMorphCounter2++;
+            morphToFailure(btnMorph, R.integer.mb_animation);
+        }
+        else if(mMorphCounter2 == 1)
+        {
+            mMorphCounter2 = 0;
+            morphToSquare2(btnMorph, R.integer.mb_animation);
+        }
+    }
 
+    private void morphToSquare1(final MorphingButton btnMorph, int duration)
+    {
+        MorphingButton.Params square = MorphingButton.Params.create()
+                .duration(duration)
+                .cornerRadius(R.dimen.mb_corner_radius_2)
+                .width(R.dimen.mb_width_200)
+                .height(R.dimen.mb_height_56)
+                .color(R.color.apporange)
+                .colorPressed(R.color.apporangeDark)
+                .text(getString(R.string.add_course));
+        btnMorph.morph(square);
+    }
+
+    private void morphToSquare2(final MorphingButton btnMorph, int duration)
+    {
+        MorphingButton.Params square = MorphingButton.Params.create()
+                .duration(duration)
+                .cornerRadius(R.dimen.mb_corner_radius_2)
+                .width(R.dimen.mb_width_200)
+                .height(R.dimen.mb_height_56)
+                .color(R.color.apporange)
+                .colorPressed(R.color.apporangeDark)
+                .text(getString(R.string.finished));
+        btnMorph.morph(square);
+    }
+
+    private void morphToSuccess(final MorphingButton btnMorph)
+    {
+        MorphingButton.Params circle = MorphingButton.Params.create()
+                .duration(R.integer.mb_animation)
+                .cornerRadius(R.dimen.mb_height_56)
+                .color(R.color.mb_green)
+                .colorPressed(R.color.mb_green_dark)
+                .icon(R.drawable.ic_done)
+                .text("Success");
+        btnMorph.morph(circle);
+    }
+
+    private void morphToFailure(final MorphingButton btnMorph, int duration)
+    {
+        MorphingButton.Params circle = MorphingButton.Params.create()
+                .duration(duration)
+                .cornerRadius(R.dimen.mb_height_56)
+                .color(R.color.mb_blue)
+                .colorPressed(R.color.mb_blue_dark)
+                .icon(R.drawable.ic_lock);
+        btnMorph.morph(circle);
     }
 }
