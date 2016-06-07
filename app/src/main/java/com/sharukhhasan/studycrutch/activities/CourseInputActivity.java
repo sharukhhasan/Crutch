@@ -1,18 +1,23 @@
 package com.sharukhhasan.studycrutch.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.dd.morphingbutton.MorphingButton;
+import com.sharukhhasan.studycrutch.AppController;
 import com.sharukhhasan.studycrutch.R;
+import com.sharukhhasan.studycrutch.models.Course;
 
 public class CourseInputActivity extends AppCompatActivity {
     private int mMorphCounter1 = 1;
     private int mMorphCounter2 = 1;
+    private Spinner dynamicSpinner;
     private String deptSelection;
 
     @Override
@@ -35,7 +40,7 @@ public class CourseInputActivity extends AppCompatActivity {
             }
         });
 
-        Spinner dynamicSpinner = (Spinner) findViewById(R.id.courseSpinner);
+        dynamicSpinner = (Spinner) findViewById(R.id.courseSpinner);
 
         final MorphingButton btnMorph1 = (MorphingButton) findViewById(R.id.addCourseBtn);
         btnMorph1.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +64,24 @@ public class CourseInputActivity extends AppCompatActivity {
 
     private void createCoursesSpinner(String dept)
     {
+        ArrayAdapter<CharSequence> courseAdapter = ArrayAdapter.createFromResource(this, R.array.ECE, android.R.layout.simple_spinner_item);
 
+        dynamicSpinner.setAdapter(courseAdapter);
+
+        dynamicSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                String courseSelection = (String) parent.getItemAtPosition(position);
+                Course newCourse = new Course(courseSelection);
+                AppController.addCourse(newCourse);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+            }
+        });
     }
 
     private void onMorphButton1Clicked(final MorphingButton btnMorph)
@@ -137,5 +159,9 @@ public class CourseInputActivity extends AppCompatActivity {
                 .colorPressed(R.color.mb_blue_dark)
                 .icon(R.drawable.ic_lock);
         btnMorph.morph(circle);
+
+        Intent intent = new Intent(CourseInputActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
