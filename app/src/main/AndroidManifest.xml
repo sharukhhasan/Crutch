@@ -45,9 +45,6 @@
         <activity
             android:name=".activities.SingleCourseActivity"
             android:theme="@style/AppTheme.Dark"/>
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="08fcf0a4f7a6c120cb1139a56b6b7604f2ba13a6" />
     </application>
 
 </manifest>
