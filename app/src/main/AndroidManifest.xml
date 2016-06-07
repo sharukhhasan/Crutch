@@ -38,13 +38,17 @@
             android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".activities.CourseInputActivity"
-            android:theme="@style/AppTheme.Dark"/>
+            android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".activities.RegisterActivity"
-            android:theme="@style/AppTheme.Dark"/>
+            android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".activities.SingleCourseActivity"
-            android:theme="@style/AppTheme.Dark"/>
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.Dark.NoActionBar"></activity>
     </application>
 
 </manifest>

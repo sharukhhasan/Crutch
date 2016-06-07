@@ -2,6 +2,8 @@ package com.sharukhhasan.studycrutch;
 
 import android.app.Application;
 
+import com.dropbox.client2.DropboxAPI;
+import com.dropbox.client2.session.Session.AccessType;
 import com.sharukhhasan.studycrutch.models.Course;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,6 +17,9 @@ import java.util.Scanner;
  */
 public class AppController extends Application{
     public static final String FIREBASE_URL = "https://studycrutch.firebaseio.com/";
+    final static public String DROPBOX_APP_KEY = "tmy78fmi3knf9qe";
+    final static public String DROPBOX_APP_SECRET = "uidi3x9rb87rea0";
+    final static public AccessType ACCESS_TYPE = AccessType.DROPBOX;
     public static ArrayList<String> engrDepts = getEngrDepts();
     public static Map<String, ArrayList<String>> engrCourseMap = getEngrCourseMap();
 
