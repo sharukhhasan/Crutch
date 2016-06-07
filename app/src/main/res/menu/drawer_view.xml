@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_main_fragment"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_first_fragment"
+            android:icon="@drawable/ic_one"
+            android:title="First" />
+        <item
+            android:id="@+id/nav_second_fragment"
+            android:icon="@drawable/ic_two"
+            android:title="Second" />
+        <item
+            android:id="@+id/nav_third_fragment"
+            android:icon="@drawable/ic_three"
+            android:title="Third" />
+        <item
+            android:id="@+id/nav_fourth_fragment"
+            android:icon="@drawable/ic_four"
+            android:title="Fourth" />
+        <item
+            android:id="@+id/nav_fifth_fragment"
+            android:icon="@drawable/ic_five"
+            android:title="Fifth" />
+    </group>
+
+    <item android:title="Sub items">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:icon="@drawable/ic_home"
+                    android:title="Home" />
+                <item
+                    android:icon="@drawable/ic_exit"
+                    android:title="Logout" />
+            </group>
+        </menu>
+    </item>
+
+</menu>
