@@ -16,6 +16,33 @@
     <string name="add_course">Add Course</string>
     <string name="finished">Finished</string>
 
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="settings">Settings</string>
+
+    <string-array name="nav_drawer_items">
+        <item >Home</item>
+        <item >ECE:2400 Linear Systems I</item>
+        <item >ECE:3350 Computer Architecture and Organization</item>
+        <item >ENGR:1432 Digital Electronics</item>
+        <item >PHYS:1612 Physics II</item>
+        <item >PSY:1001 Elementary Psychology</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_one</item>
+        <item>@drawable/ic_two</item>
+        <item>@drawable/ic_three</item>
+        <item>@drawable/ic_four</item>
+        <item>@drawable/ic_five</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
     <string-array name="deptArray">
         <item>BME</item>
         <item>CBE</item>
@@ -26,7 +53,7 @@
         <item>ME</item>
     </string-array>
 
-    <string-array name="ece_courses">
+    <string-array name="ECE">
         <item>ECE:2400 Linear Systems I</item>
         <item>ECE:2410 Principles of Electronic Instrumentation</item>
         <item>ECE:3350 Computer Architecture and Organization</item>
@@ -52,7 +79,7 @@
         <item>ECE:7995 Adv Topics in Electrical and Computer Engr</item>
     </string-array>
 
-    <string-array name="me_courses">
+    <string-array name="ME">
         <item>ME:3040 Thermodynamics II</item>
         <item>ME:3045 Heat Transfer</item>
         <item>ME:3052 Mechanical Systems</item>
@@ -79,7 +106,7 @@
         <item>ME:7269 Comp Fluid Dynamics and Heat Transfer</item>
     </string-array>
 
-    <string-array name="engr_courses">
+    <string-array name="ENGR">
         <item>ENGR:1100 Engineering Problem Solving I</item>
         <item>ENGR:1300 Engineering Problem Solving II</item>
         <item>ENGR:1430 Introduction to Engineering Design</item>
@@ -103,7 +130,7 @@
         <item>ENGR:4000 Engineering Honors Seminar</item>
     </string-array>
 
-    <string-array name="cee_courses">
+    <string-array name="CEE">
         <item>CEE:1030 Introduction to Earth Science</item>
         <item>CEE:2150 Natural Environmental Systems</item>
         <item>CEE:2240 Digital Drafting with AutoCAD</item>
@@ -141,7 +168,7 @@
         <item>CEE:7549 Multiscale Modeling</item>
     </string-array>
 
-    <string-array name="cbe_courses">
+    <string-array name="CBE">
         <item>CBE:2105 Process Calculations</item>
         <item>CBE:3105 Chemical Engineering Thermodynamics</item>
         <item>CBE:3110 Engineering Flow and Heat Exchange</item>
@@ -161,7 +188,7 @@
         <item>CBE:5875 Perspectives in Biocatalysis</item>
     </string-array>
 
-    <string-array name="bme_courses">
+    <string-array name="BME">
         <item>BME:2110 Cell Biology for Engineers</item>
         <item>BME:2200 Systems Instrum and Data Acquisition</item>
         <item>BME:2210 Bioimaging and Bioinformatics</item>
@@ -180,7 +207,7 @@
         <item>BME:5911 Fast Track Biomedical Eng Design 2B</item>
     </string-array>
 
-    <string-array name="ie_courses">
+    <string-array name="IE">
         <item>IE:2500 Engineering Economy</item>
         <item>IE:3149 Information Visualization</item>
         <item>IE:3300 Manufacturing Systems</item>
