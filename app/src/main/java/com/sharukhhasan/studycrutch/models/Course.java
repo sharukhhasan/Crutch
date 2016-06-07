@@ -11,7 +11,10 @@ public class Course {
     private ArrayList<User> classmates;
     private ArrayList<WallPost> courseWall;
 
-    public Course() {}
+    public Course(String courseName)
+    {
+        this.courseName = courseName;
+    }
 
     public String getProfessor() {
         return professor;
