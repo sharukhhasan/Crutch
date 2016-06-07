@@ -2,15 +2,12 @@ package com.sharukhhasan.studycrutch.activities;
 
 import java.util.ArrayList;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,12 +17,6 @@ import android.widget.ListView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharukhhasan.studycrutch.R;
 import com.sharukhhasan.studycrutch.adapter.NavDrawerListAdapter;
-import com.sharukhhasan.studycrutch.fragments.CourseFiveFragment;
-import com.sharukhhasan.studycrutch.fragments.CourseFourFragment;
-import com.sharukhhasan.studycrutch.fragments.CourseOneFragment;
-import com.sharukhhasan.studycrutch.fragments.CourseThreeFragment;
-import com.sharukhhasan.studycrutch.fragments.CourseTwoFragment;
-import com.sharukhhasan.studycrutch.fragments.MainFragment;
 import com.sharukhhasan.studycrutch.models.NavDrawerItem;
 
 public class HomeActivity extends AppCompatActivity {
@@ -90,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
 
         if(savedInstanceState == null)
         {
-            displayView(0);
+            //displayView(0);
         }
     }
 
@@ -98,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id)
         {
-            displayView(position);
+            //displayView(position);
         }
     }
 
@@ -133,7 +124,7 @@ public class HomeActivity extends AppCompatActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
-    private void displayView(int position)
+    /*private void displayView(int position)
     {
         Fragment fragment = null;
 
@@ -175,7 +166,7 @@ public class HomeActivity extends AppCompatActivity {
         {
             Log.e("MainActivity", "Error in creating fragment");
         }
-    }
+    }*/
 
     @Override
     public void setTitle(CharSequence title)

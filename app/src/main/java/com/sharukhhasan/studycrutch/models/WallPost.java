@@ -11,6 +11,8 @@ public class WallPost {
     private Date datePosted;
     private User userPosted;
     private Course coursePosted;
+    private String smallImageURL;
+
 
     public WallPost() {}
 
@@ -52,5 +54,15 @@ public class WallPost {
 
     public void setCoursePosted(Course coursePosted) {
         this.coursePosted = coursePosted;
+    }
+
+    public String getSmallImageURL()
+    {
+        return smallImageURL;
+    }
+
+    public void setSmallImageURL(String smallImageURL)
+    {
+        this.smallImageURL = smallImageURL;
     }
 }
